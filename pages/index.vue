@@ -3,6 +3,8 @@ import { useCounterStore } from '~/stores/myCounter';
 const { data: home } = await useAsyncData(() => queryCollection('content').path('/').first());
 // const useCounter = useState<number>('counter', () => Math.round(Math.random() * 1000)); Page State
 //const counter = useCounter();
+const { data } = await useFetch("/api/hello");
+const name:string = data.value?.data.name ?? "";
 const store = useCounterStore(); 
 /*
     definePageMeta({
@@ -16,6 +18,13 @@ const store = useCounterStore();
     sayGreetingToName("Phoethar");
     const { $helloworld } = useNuxtApp();
     $helloworld();
+    useHead({
+        'title': 'Hello World',
+        'meta': [
+            { name: 'description', content: 'Hello World' },
+            { name: 'keywords', content: 'hello, world' },
+        ],
+    });
 */
 </script>
 
